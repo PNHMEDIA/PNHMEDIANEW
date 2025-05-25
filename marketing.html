@@ -1,0 +1,1955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PNH MEDIA - Master Your Digital Marketing</title>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.28/build/spline-viewer.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 2rem;
+            }
+        }
+
+        /* Hero Spline Background */
+        .hero-spline-background {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            pointer-events: auto;
+            overflow: hidden;
+        }
+
+        .spline-container {
+            width: 100%;
+            height: 100vh;
+            pointer-events: auto;
+        }
+
+        .spline-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent 30%, transparent 70%, rgba(0, 0, 0, 0.8)),
+                        linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.9));
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 20;
+            background-color: rgba(13, 13, 24, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 0 0 15px 15px;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 1024px) {
+            .nav-left {
+                gap: 2rem;
+            }
+        }
+
+        .logo {
+            width: 32px;
+            height: 32px;
+            color: white;
+        }
+
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 1024px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.15s;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        .nav-link.dimmed {
+            color: #6b7280;
+        }
+
+        .dropdown-arrow {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.2s;
+        }
+
+        .nav-item:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown {
+            position: absolute;
+            left: 0;
+            top: 100%;
+            margin-top: 0.5rem;
+            width: 12rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 0.375rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 0;
+            border: 1px solid rgba(55, 65, 81, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s;
+            z-index: 30;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dropdown-link {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.15s;
+        }
+
+        .dropdown-link:hover {
+            color: #f3f4f6;
+            background-color: rgba(31, 41, 55, 0.3);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .nav-right {
+                gap: 1.5rem;
+            }
+        }
+
+        .nav-right a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.15s;
+        }
+
+        .nav-right a:hover {
+            color: white;
+        }
+
+        .nav-right .contact-sales {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .nav-right .contact-sales {
+                display: block;
+            }
+        }
+
+        .nav-right .sign-in {
+            display: none;
+        }
+
+        @media (min-width: 640px) {
+            .nav-right .sign-in {
+                display: block;
+            }
+        }
+
+        .btn-primary {
+            background-color: rgba(130, 0, 219, 0.16);
+            border: 1px solid #322D36;
+            color: white;
+            font-weight: 600;
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            backdrop-filter: blur(8px);
+            font-size: 0.875rem;
+        }
+
+        @media (min-width: 768px) {
+            .btn-primary {
+                font-size: 1rem;
+            }
+        }
+
+        .btn-primary:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            color: white;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+
+        .mobile-menu {
+            display: block;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-top: 1px solid rgba(55, 65, 81, 0.3);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 30;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-menu {
+                display: none;
+            }
+        }
+
+        .mobile-menu.open {
+            max-height: 100vh;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-menu-content {
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mobile-nav-item {
+            position: relative;
+        }
+
+        .mobile-nav-btn {
+            background: none;
+            border: none;
+            color: #d1d5db;
+            width: 100%;
+            text-align: left;
+            padding: 0.5rem 0;
+            font-size: 0.875rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: color 0.15s;
+        }
+
+        .mobile-nav-btn:hover {
+            color: #f3f4f6;
+        }
+
+        .mobile-dropdown {
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .mobile-dropdown.open {
+            max-height: 200px;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-dropdown a {
+            display: block;
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 0.875rem;
+            padding: 0.25rem 0;
+            transition: color 0.15s;
+        }
+
+        .mobile-dropdown a:hover {
+            color: #f3f4f6;
+        }
+
+        /* Hero Content */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: auto;
+        }
+
+        .hero-content-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: left;
+            color: white;
+            padding-top: 4rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            max-width: 48rem;
+            width: 100%;
+        }
+
+        @media (min-width: 640px) {
+            .hero-content {
+                padding-top: 6rem;
+                padding-left: 2rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero-content {
+                padding-top: 8rem;
+                padding-left: 3rem;
+            }
+        }
+
+        .hero-title {
+            font-size: 1.875rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            letter-spacing: 0.025em;
+            text-align: left;
+        }
+
+        @media (min-width: 640px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 4.5rem;
+            }
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+            max-width: 36rem;
+            text-align: left;
+        }
+
+        @media (min-width: 640px) {
+            .hero-description {
+                font-size: 1.125rem;
+                margin-bottom: 2rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero-description {
+                font-size: 1.25rem;
+            }
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.75rem;
+            pointer-events: auto;
+        }
+
+        @media (min-width: 640px) {
+            .hero-buttons {
+                flex-direction: row;
+                gap: 0.75rem;
+            }
+        }
+
+        .btn-hero-primary {
+            background-color: rgba(130, 0, 219, 0.16);
+            border: 1px solid #322D36;
+            color: white;
+            font-weight: 600;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            backdrop-filter: blur(8px);
+            width: 100%;
+            text-align: center;
+            display: block;
+        }
+
+        @media (min-width: 640px) {
+            .btn-hero-primary {
+                padding: 0.75rem 2rem;
+                width: auto;
+            }
+        }
+
+        .btn-hero-primary:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-hero-secondary {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: 1px solid #6b7280;
+            color: #e5e7eb;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: all 0.3s;
+            pointer-events: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+        }
+
+        @media (min-width: 640px) {
+            .btn-hero-secondary {
+                padding: 0.75rem 2rem;
+                width: auto;
+            }
+        }
+
+        .btn-hero-secondary:hover {
+            border-color: #9ca3af;
+            color: white;
+        }
+
+        .play-icon {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .play-icon {
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+        }
+
+        /* Screenshot Section */
+        .screenshot-section {
+            position: relative;
+            z-index: 10;
+            margin-top: -10vh;
+            padding-top: 2.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .screenshot-section {
+                padding-top: 3rem;
+            }
+        }
+
+        .screenshot-container {
+            background-color: #111827;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(55, 65, 81, 0.5);
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .screenshot-container {
+                width: 80%;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .screenshot-container {
+                width: 70%;
+            }
+        }
+
+        .screenshot-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 0.5rem;
+            margin: 0 auto;
+        }
+
+        /* Additional Content */
+        .additional-content {
+            background-color: #000;
+            position: relative;
+            z-index: 10;
+            padding: 4rem 0;
+        }
+
+        .additional-content h2 {
+            font-size: 2.25rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .additional-content p {
+            text-align: center;
+            max-width: 36rem;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+
+        /* Hero Scroll Section */
+        .container-scroll {
+            height: 60rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 0.5rem;
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .container-scroll {
+                height: 80rem;
+                padding: 5rem;
+            }
+        }
+
+        .scroll-container {
+            padding: 2.5rem 0;
+            width: 100%;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        @media (min-width: 768px) {
+            .scroll-container {
+                padding: 10rem 0;
+            }
+        }
+
+        .scroll-header {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: left;
+        }
+
+        .scroll-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: white;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .scroll-title {
+                font-size: 6rem;
+                font-weight: bold;
+                line-height: 1;
+            }
+        }
+
+        .scroll-subtitle {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: white;
+            display: block;
+        }
+
+        @media (min-width: 768px) {
+            .scroll-subtitle {
+                font-size: 6rem;
+                font-weight: bold;
+                line-height: 1;
+            }
+        }
+
+        .scroll-card {
+            max-width: 80rem;
+            margin: 0 auto;
+            margin-top: -3rem;
+            height: 30rem;
+            width: 100%;
+            border: 4px solid #6C6C6C;
+            padding: 0.5rem;
+            background-color: #222222;
+            border-radius: 30px;
+            box-shadow: 0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 233px 65px #00000003;
+        }
+
+        @media (min-width: 768px) {
+            .scroll-card {
+                height: 40rem;
+                padding: 1.5rem;
+            }
+        }
+
+        .scroll-card-inner {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 1rem;
+            background-color: #18181b;
+            padding: 0;
+        }
+
+        @media (min-width: 768px) {
+            .scroll-card-inner {
+                padding: 1rem;
+            }
+        }
+
+        .scroll-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: left top;
+            border-radius: 1rem;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+        }
+
+        /* Table Section */
+        .table-section {
+            background-color: #000;
+            padding: 6rem 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .table-container {
+            background-color: #111827;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(55, 65, 81, 0.5);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        .table-header {
+            background-color: rgba(107, 114, 128, 0.1);
+        }
+
+        .table-header th {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #9ca3af;
+            border-bottom: 1px solid rgba(55, 65, 81, 0.3);
+        }
+
+        .table-body tr {
+            border-bottom: 1px solid rgba(55, 65, 81, 0.3);
+            transition: background-color 0.2s;
+        }
+
+        .table-body tr:hover {
+            background-color: rgba(55, 65, 81, 0.1);
+        }
+
+        .table-body td {
+            padding: 0.75rem 1rem;
+            color: #e5e7eb;
+        }
+
+        .keyword-cell {
+            font-weight: 500;
+            color: white;
+        }
+
+        .intent-badges {
+            display: flex;
+            gap: 0.25rem;
+            flex-wrap: wrap;
+        }
+
+        .intent-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .intent-informational {
+            background-color: rgba(99, 102, 241, 0.2);
+            color: #818cf8;
+        }
+
+        .intent-navigational {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+        }
+
+        .intent-commercial {
+            background-color: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+        }
+
+        .intent-transactional {
+            background-color: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+        }
+
+        .filters-section {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .filter-label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #d1d5db;
+        }
+
+        .filter-input {
+            padding: 0.5rem 0.75rem;
+            background-color: rgba(17, 24, 39, 0.5);
+            border: 1px solid rgba(55, 65, 81, 0.5);
+            border-radius: 0.375rem;
+            color: white;
+            font-size: 0.875rem;
+            width: 10rem;
+        }
+
+        .filter-input::placeholder {
+            color: #9ca3af;
+        }
+
+        .filter-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+        }
+
+        .checkbox-cell {
+            width: 3rem;
+        }
+
+        .checkbox {
+            width: 1rem;
+            height: 1rem;
+            accent-color: #3b82f6;
+        }
+
+        /* Footer */
+        .footer {
+            position: relative;
+            width: 100%;
+            max-width: 72rem;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2rem 2rem 0 0;
+            border-top: 1px solid rgba(55, 65, 81, 0.3);
+            background: radial-gradient(35% 128px at 50% 0%, rgba(255, 255, 255, 0.08), transparent);
+            padding: 3rem 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer {
+                border-radius: 3rem 3rem 0 0;
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            width: 33.33%;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 9999px;
+            filter: blur(1px);
+        }
+
+        .footer-grid {
+            display: grid;
+            width: 100%;
+            gap: 2rem;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 1280px) {
+            .footer-grid {
+                grid-template-columns: 1fr 2fr;
+                gap: 2rem;
+            }
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            width: 2rem;
+            height: 2rem;
+            color: white;
+        }
+
+        .footer-copyright {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            margin-top: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-copyright {
+                margin-top: 0;
+            }
+        }
+
+        .footer-links-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-links-grid {
+                grid-template-columns: repeat(4, 1fr);
+                margin-top: 0;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .footer-links-grid {
+                grid-column: 2;
+            }
+        }
+
+        .footer-section {
+            margin-bottom: 2.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-section {
+                margin-bottom: 0;
+            }
+        }
+
+        .footer-section-title {
+            font-size: 0.75rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-link {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        .footer-link-icon {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            overflow: hidden;
+            padding-top: 0;
+            background-color: #000;
+        }
+
+        .cta-container {
+            position: relative;
+            margin: 0 auto;
+            display: flex;
+            max-width: 80rem;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        @media (min-width: 640px) {
+            .cta-container {
+                gap: 2rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .cta-container {
+                padding: 6rem 2rem;
+            }
+        }
+
+        .cta-badge {
+            display: inline-flex;
+            align-items: center;
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.625rem 2.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: colors 0.2s;
+            opacity: 0;
+            animation: fade-in-up 0.5s ease-out forwards;
+            animation-delay: 100ms;
+        }
+
+        .cta-badge span {
+            color: #9ca3af;
+        }
+
+        .cta-title {
+            font-size: 1.875rem;
+            font-weight: 600;
+            color: white;
+            opacity: 0;
+            animation: fade-in-up 0.5s ease-out forwards;
+            animation-delay: 200ms;
+        }
+
+        @media (min-width: 640px) {
+            .cta-title {
+                font-size: 3rem;
+            }
+        }
+
+        .cta-description {
+            color: #9ca3af;
+            opacity: 0;
+            animation: fade-in-up 0.5s ease-out forwards;
+            animation-delay: 300ms;
+            max-width: 36rem;
+        }
+
+        .cta-button {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.2s;
+            opacity: 0;
+            animation: fade-in-up 0.5s ease-out forwards;
+            animation-delay: 500ms;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #2563eb;
+        }
+
+        .cta-glow {
+            pointer-events: none;
+            position: absolute;
+            inset: 0;
+            border-radius: 1rem;
+            box-shadow: 0 -16px 128px 0 hsla(220, 91%, 65%, 0.5) inset, 0 -16px 32px 0 hsla(220, 91%, 65%, 0.5) inset;
+            opacity: 0;
+            animation: scale-in 0.5s ease-out forwards;
+            animation-delay: 700ms;
+            mask-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 1) 8rem);
+        }
+
+        /* Animations */
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes scale-in {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive utilities */
+        .sm-hidden {
+            display: none;
+        }
+
+        @media (min-width: 640px) {
+            .sm-hidden {
+                display: inline;
+            }
+        }
+
+        /* Animation utilities */
+        .fade-out {
+            transition: opacity 0.3s ease-out;
+        }
+
+        .parallax {
+            transition: transform 0.1s ease-out;
+        }
+
+        .animate-in {
+            animation-duration: 1000ms;
+            animation-fill-mode: forwards;
+            animation-timing-function: ease-out;
+        }
+
+        .delay-100 {
+            animation-delay: 100ms;
+        }
+        .delay-200 {
+            animation-delay: 200ms;
+        }
+        .delay-300 {
+            animation-delay: 300ms;
+        }
+        .delay-500 {
+            animation-delay: 500ms;
+        }
+        .delay-700 {
+            animation-delay: 700ms;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container container">
+            <div class="nav-left">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32ZM12.4306 9.70695C12.742 9.33317 13.2633 9.30058 13.6052 9.62118L19.1798 14.8165C19.4894 15.1054 19.4894 15.5841 19.1798 15.873L13.6052 21.0683C13.2633 21.3889 12.742 21.3563 12.4306 21.2991V9.70695Z" fill="currentColor" />
+                    </svg>
+                </div>
+
+                <div class="nav-links">
+                    <div class="nav-item">
+                        <a href="#" class="nav-link">
+                            Campaign Tools
+                            <svg class="dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </a>
+                        <div class="dropdown">
+                            <a href="#" class="dropdown-link">Facebook Ads Manager</a>
+                            <a href="#" class="dropdown-link">Google Ads Suite</a>
+                            <a href="#" class="dropdown-link">TikTok Ad Studio</a>
+                            <a href="#" class="dropdown-link">LinkedIn Campaigns</a>
+                        </div>
+                    </div>
+
+                    <div class="nav-item">
+                        <a href="#" class="nav-link">
+                            Analytics
+                            <svg class="dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </a>
+                        <div class="dropdown">
+                            <a href="#" class="dropdown-link">ROI Tracking</a>
+                            <a href="#" class="dropdown-link">Attribution Models</a>
+                            <a href="#" class="dropdown-link">Conversion Funnels</a>
+                        </div>
+                    </div>
+
+                    <div class="nav-item">
+                        <a href="#" class="nav-link">
+                            Resources
+                            <svg class="dropdown-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </a>
+                        <div class="dropdown">
+                            <a href="#" class="dropdown-link">Ad Templates</a>
+                            <a href="#" class="dropdown-link">Case Studies</a>
+                            <a href="#" class="dropdown-link">Best Practices</a>
+                            <a href="#" class="dropdown-link">Support Center</a>
+                        </div>
+                    </div>
+
+                    <a href="#" class="nav-link">Pricing</a>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <a href="#" class="contact-sales">Book Demo</a>
+                <a href="#" class="sign-in">Sign In</a>
+                <a href="#" class="btn-primary">Start Free Trial</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+                    <svg class="w-6 h-6" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" id="menuIcon" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-content">
+                <div class="mobile-nav-item">
+                    <button class="mobile-nav-btn" data-dropdown="campaignTools">
+                        Campaign Tools
+                        <svg class="dropdown-arrow" width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="mobile-dropdown" id="campaignToolsDropdown">
+                        <a href="#">Facebook Ads Manager</a>
+                        <a href="#">Google Ads Suite</a>
+                        <a href="#">TikTok Ad Studio</a>
+                        <a href="#">LinkedIn Campaigns</a>
+                    </div>
+                </div>
+                <div class="mobile-nav-item">
+                    <button class="mobile-nav-btn" data-dropdown="analytics">
+                        Analytics
+                        <svg class="dropdown-arrow" width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="mobile-dropdown" id="analyticsDropdown">
+                        <a href="#">ROI Tracking</a>
+                        <a href="#">Attribution Models</a>
+                        <a href="#">Conversion Funnels</a>
+                    </div>
+                </div>
+                <div class="mobile-nav-item">
+                    <button class="mobile-nav-btn" data-dropdown="resources">
+                        Resources
+                        <svg class="dropdown-arrow" width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div class="mobile-dropdown" id="resourcesDropdown">
+                        <a href="#">Ad Templates</a>
+                        <a href="#">Case Studies</a>
+                        <a href="#">Best Practices</a>
+                        <a href="#">Support Center</a>
+                    </div>
+                </div>
+                <a href="#" style="color: #d1d5db; text-decoration: none; font-size: 0.875rem; padding: 0.5rem 0;">Pricing</a>
+                <a href="#" style="color: #d1d5db; text-decoration: none; font-size: 0.875rem; padding: 0.5rem 0;">Book Demo</a>
+                <a href="#" style="color: #d1d5db; text-decoration: none; font-size: 0.875rem; padding: 0.5rem 0;">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <!-- Hero Background -->
+        <div class="hero-background">
+            <div class="hero-spline-background">
+                <spline-viewer class="spline-container" url="https://prod.spline.design/us3ALejTXl6usHZ7/scene.splinecode"></spline-viewer>
+                <div class="spline-overlay"></div>
+            </div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="hero-content-wrapper">
+            <div class="container">
+                <div class="hero-content" id="heroContent">
+                    <h1 class="hero-title">
+                        Scale your <span class="sm-hidden"><br /></span>digital advertising<span class="sm-hidden"><br /></span> like never before.
+                    </h1>
+                    <p class="hero-description">
+                        Manage Facebook Ads, Google Ads, TikTok campaigns, and social media marketing from one powerful dashboard. Optimize ROI, track attribution, and automate high-performing campaigns across all platforms.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn-hero-primary">Start Free Trial</a>
+                        <a href="#" class="btn-hero-secondary">
+                            <svg class="play-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                            </svg>
+                            Watch Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screenshot Section -->
+    <div class="additional-content">
+        <section class="screenshot-section container">
+            <div class="screenshot-container" id="screenshotContainer">
+                <img
+                    src="https://cdn.sanity.io/images/s6lu43cv/production-v4/13b6177b537aee0fc311a867ea938f16416e8670-3840x2160.jpg?w=3840&h=2160&q=10&auto=format&fm=jpg"
+                    alt="AdFlow Pro Dashboard - Digital Marketing Analytics"
+                    class="screenshot-img"
+                />
+            </div>
+        </section>
+
+        <div class="container" style="padding: 4rem 1rem; text-align: center;">
+            <h2>Maximize Your Ad Spend ROI</h2>
+            <p style="max-width: 36rem; margin: 0 auto; opacity: 0.8;">
+                Join 10,000+ marketers who increased their ROAS by 3.2x using our unified advertising platform. 
+                Track performance across Meta, Google, TikTok, LinkedIn, and more.
+            </p>
+        </div>
+    </div>
+
+    <!-- Container Scroll Section -->
+    <div class="container-scroll" id="containerScrollRef">
+        <div class="scroll-container">
+            <div class="scroll-header" id="scrollHeader">
+                <h1 class="scroll-title">
+                    Unleash the power of
+                    <br />
+                    <span class="scroll-subtitle">Advanced Analytics</span>
+                </h1>
+            </div>
+            <div class="scroll-card" id="scrollCard">
+                <div class="scroll-card-inner">
+                    <img
+                        src="https://ui.aceternity.com/_next/image?url=%2Flinear.webp&w=3840&q=75"
+                        alt="Advanced Analytics Dashboard"
+                        class="scroll-image"
+                        draggable="false"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Table Section -->
+    <div class="table-section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.25rem; font-weight: bold; margin-bottom: 1rem; color: white;">
+                    Campaign Performance Data
+                </h2>
+                <p style="color: #9ca3af; max-width: 36rem; margin: 0 auto;">
+                    Real-time insights from Google Ads, Meta, and other PPC platforms to optimize your digital marketing strategy.
+                </p>
+            </div>
+            
+            <!-- Filters -->
+            <div class="filters-section">
+                <div class="filter-group">
+                    <label class="filter-label">Search Keywords</label>
+                    <input type="text" class="filter-input" placeholder="Search keywords..." id="keywordFilter">
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Platform</label>
+                    <select class="filter-input" id="platformFilter">
+                        <option value="">All Platforms</option>
+                        <option value="Google Ads">Google Ads</option>
+                        <option value="Meta Ads">Meta Ads</option>
+                        <option value="TikTok Ads">TikTok Ads</option>
+                        <option value="LinkedIn Ads">LinkedIn Ads</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Min Volume</label>
+                    <input type="number" class="filter-input" placeholder="Min volume..." id="minVolumeFilter">
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Max CPC</label>
+                    <input type="number" class="filter-input" placeholder="Max CPC..." id="maxCpcFilter" step="0.01">
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead class="table-header">
+                        <tr>
+                            <th class="checkbox-cell">
+                                <input type="checkbox" class="checkbox" id="selectAll">
+                            </th>
+                            <th>Keyword</th>
+                            <th>Platform</th>
+                            <th>Intent</th>
+                            <th>Search Volume</th>
+                            <th>CPC</th>
+                            <th>Traffic</th>
+                            <th>ROAS</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-body" id="tableBody">
+                        <tr>
+                            <td class="checkbox-cell">
+                                <input type="checkbox" class="checkbox row-checkbox">
+                            </td>
+                            <td class="keyword-cell">google ads management</td>
+                            <td>Google Ads</td>
+                            <td>
+                                <div class="intent-badges">
+                                    <span class="intent-badge intent-commercial">C</span>
+                                    <span class="intent-badge intent-transactional">T</span>
+                                </div>
+                            </td>
+                            <td>12,400</td>
+                            <td>$3.25</td>
+                            <td>1,856</td>
+                            <td>4.2x</td>
+                            <td style="color: #34d399;">Active</td>
+                        </tr>
+                        <tr>
+                            <td class="checkbox-cell">
+                                <input type="checkbox" class="checkbox row-checkbox">
+                            </td>
+                            <td class="keyword-cell">facebook ads optimization</td>
+                            <td>Meta Ads</td>
+                            <td>
+                                <div class="intent-badges">
+                                    <span class="intent-badge intent-informational">I</span>
+                                    <span class="intent-badge intent-commercial">C</span>
+                                </div>
+                            </td>
+                            <td>8,750</td>
+                            <td>$2.85</td>
+                            <td>1,204</td>
+                            <td>3.8x</td>
+                            <td style="color: #34d399;">Active</td>
+                        </tr>
+                        <tr>
+                            <td class="checkbox-cell">
+                                <input type="checkbox" class="checkbox row-checkbox">
+                            </td>
+                            <td class="keyword-cell">ppc campaign strategy</td>
+                            <td>Google Ads</td>
+                            <td>
+                                <div class="intent-badges">
+                                    <span class="intent-badge intent-informational">I</span>
+                                    <span class="intent-badge intent-commercial">C</span>
+                                </div>
+                            </td>
+                            <td>5,420</td>
+                            <td>$4.10</td>
+                            <td>892</td>
+                            <td>3.1x</td>
+                            <td style="color: #34d399;">Active</td>
+                        </tr>
+                        <tr>
+                            <td class="checkbox-cell">
+                                <input type="checkbox" class="checkbox row-checkbox">
+                            </td>
+                            <td class="keyword-cell">meta advertising platform</td>
+                            <td>Meta Ads</td>
+                            <td>
+                                <div class="intent-badges">
+                                    <span class="intent-badge intent-navigational">N</span>
+                                    <span class="intent-badge intent-commercial">C</span>
+                                </div>
+                            </td>
+                            <td>9,680</td>
+                            <td>$2.45</td>
+                            <td>1,567</td>
+                            <td>5.1x</td>
+                            <td style="color: #34d399;">Active</td>
+                        </tr>
+                        <tr>
+                            <td class="checkbox-cell">
+                                <input type="checkbox" class="checkbox row-checkbox">
+                            </td>
+                            <td class="keyword-cell">tiktok ads manager</td>
+                            <td>TikTok Ads</td>
+                            <td>
+                                <div class="intent-badges">
+                                    <span class="intent-badge intent-navigational">N</span>
+                                    <span class="intent-badge intent-transactional">T</span>
+                                </div>
+                            </td>
+                            <td>4,210</td>
+                            <td>$1.95</td>
+                            <td>678</td>
+                            <td>2.8x</td>
+                            <td style="color: #fbbf24;">Paused</td>
+                        </tr>
+                        <tr>
+                            <td class="checkbox-cell">
+                                <input type="checkbox" class="checkbox row-checkbox">
+                            </td>
+                            <td class="keyword-cell">linkedin advertising cost</td>
+                            <td>LinkedIn Ads</td>
+                            <td>
+                                <div class="intent-badges">
+                                    <span class="intent-badge intent-informational">I</span>
+                                </div>
+                            </td>
+                            <td>2,890</td>
+                            <td>$6.75</td>
+                            <td>445</td>
+                            <td>2.4x</td>
+                            <td style="color: #34d399;">Active</td>
+                        </tr>
+                        <tr>
+                            <td class="checkbox-cell">
+                                <input type="checkbox" class="checkbox row-checkbox">
+                            </td>
+                            <td class="keyword-cell">digital marketing roi</td>
+                            <td>Google Ads</td>
+                            <td>
+                                <div class="intent-badges">
+                                    <span class="intent-badge intent-informational">I</span>
+                                    <span class="intent-badge intent-commercial">C</span>
+                                </div>
+                            </td>
+                            <td>7,320</td>
+                            <td>$3.60</td>
+                            <td>1,123</td>
+                            <td>4.7x</td>
+                            <td style="color: #34d399;">Active</td>
+                        </tr>
+                        <tr>
+                            <td class="checkbox-cell">
+                                <input type="checkbox" class="checkbox row-checkbox">
+                            </td>
+                            <td class="keyword-cell">social media advertising</td>
+                            <td>Meta Ads</td>
+                            <td>
+                                <div class="intent-badges">
+                                    <span class="intent-badge intent-informational">I</span>
+                                    <span class="intent-badge intent-commercial">C</span>
+                                </div>
+                            </td>
+                            <td>15,600</td>
+                            <td>$2.20</td>
+                            <td>2,340</td>
+                            <td>3.9x</td>
+                            <td style="color: #34d399;">Active</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <p style="margin-top: 1rem; text-align: center; font-size: 0.875rem; color: #9ca3af;">
+                Data table showing campaign performance across Google Ads, Meta, TikTok, and LinkedIn advertising platforms.
+            </p>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <div class="cta-badge">
+                <span>Get started</span>
+            </div>
+            <h2 class="cta-title">Start building with PNH MEDIA</h2>
+            <p class="cta-description">
+                Get started with PNH MEDIA and scale your digital advertising campaigns across all platforms in no time
+            </p>
+            <a href="#" class="cta-button">Get Started</a>
+            <div class="cta-glow"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <svg class="footer-logo" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32ZM12.4306 9.70695C12.742 9.33317 13.2633 9.30058 13.6052 9.62118L19.1798 14.8165C19.4894 15.1054 19.4894 15.5841 19.1798 15.873L13.6052 21.0683C13.2633 21.3889 12.742 21.3563 12.4306 21.2991V9.70695Z" fill="currentColor" />
+                </svg>
+                <p class="footer-copyright">
+                    © 2025 PNH MEDIA. All rights reserved.
+                </p>
+            </div>
+            
+            <div class="footer-links-grid">
+                <div class="footer-section">
+                    <h3 class="footer-section-title">Product</h3>
+                    <ul class="footer-links">
+                        <li><a href="#features" class="footer-link">Features</a></li>
+                        <li><a href="#pricing" class="footer-link">Pricing</a></li>
+                        <li><a href="#testimonials" class="footer-link">Testimonials</a></li>
+                        <li><a href="/" class="footer-link">Integration</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-section-title">Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="/faqs" class="footer-link">FAQs</a></li>
+                        <li><a href="/about" class="footer-link">About Us</a></li>
+                        <li><a href="/privacy" class="footer-link">Privacy Policy</a></li>
+                        <li><a href="/terms" class="footer-link">Terms of Services</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-section-title">Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="/blog" class="footer-link">Blog</a></li>
+                        <li><a href="/changelog" class="footer-link">Changelog</a></li>
+                        <li><a href="/brand" class="footer-link">Brand</a></li>
+                        <li><a href="/help" class="footer-link">Help</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-section-title">Social Links</h3>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="#" class="footer-link">
+                                <svg class="footer-link-icon" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                                </svg>
+                                Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer-link">
+                                <svg class="footer-link-icon" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.042-3.441.219-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.097.118.112.222.083.343-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                                </svg>
+                                Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer-link">
+                                <svg class="footer-link-icon" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                </svg>
+                                Youtube
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="footer-link">
+                                <svg class="footer-link-icon" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                                LinkedIn
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation hover effects
+        let hoveredNavItem = null;
+        
+        function updateNavLinks() {
+            const navLinks = document.querySelectorAll('.nav-links .nav-link');
+            navLinks.forEach(link => {
+                const itemName = link.textContent.trim().split('\n')[0].trim();
+                const isCurrentItemHovered = hoveredNavItem === itemName;
+                const isAnotherItemHovered = hoveredNavItem !== null && !isCurrentItemHovered;
+                
+                link.classList.remove('dimmed');
+                if (isAnotherItemHovered) {
+                    link.classList.add('dimmed');
+                }
+            });
+        }
+
+        document.querySelectorAll('.nav-item').forEach(item => {
+            const link = item.querySelector('.nav-link');
+            const itemName = link.textContent.trim().split('\n')[0].trim();
+            
+            item.addEventListener('mouseenter', () => {
+                hoveredNavItem = itemName;
+                updateNavLinks();
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                hoveredNavItem = null;
+                updateNavLinks();
+            });
+        });
+
+        // Pricing link hover
+        const pricingLink = document.querySelector('.nav-links a[href="#"]:last-child');
+        if (pricingLink) {
+            pricingLink.addEventListener('mouseenter', () => {
+                hoveredNavItem = 'Pricing';
+                updateNavLinks();
+            });
+
+            pricingLink.addEventListener('mouseleave', () => {
+                hoveredNavItem = null;
+                updateNavLinks();
+            });
+        }
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        let isMobileMenuOpen = false;
+
+        function toggleMobileMenu() {
+            isMobileMenuOpen = !isMobileMenuOpen;
+            
+            if (isMobileMenuOpen) {
+                mobileMenu.classList.add('open');
+                menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            } else {
+                mobileMenu.classList.remove('open');
+                menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+                // Close all mobile dropdowns
+                document.querySelectorAll('.mobile-dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('open');
+                });
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        // Mobile dropdown functionality
+        document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const dropdownName = btn.getAttribute('data-dropdown');
+                const dropdown = document.getElementById(dropdownName + 'Dropdown');
+                const arrow = btn.querySelector('.dropdown-arrow');
+                
+                const isOpen = dropdown.classList.contains('open');
+                
+                // Close all other dropdowns
+                document.querySelectorAll('.mobile-dropdown').forEach(d => {
+                    if (d !== dropdown) {
+                        d.classList.remove('open');
+                    }
+                });
+                
+                // Toggle current dropdown
+                if (isOpen) {
+                    dropdown.classList.remove('open');
+                    arrow.style.transform = 'rotate(0deg)';
+                } else {
+                    dropdown.classList.add('open');
+                    arrow.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // Close mobile menu when clicking on links
+        document.querySelectorAll('.mobile-dropdown a').forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024 && isMobileMenuOpen) {
+                toggleMobileMenu();
+            }
+        });
+
+        // Scroll effects
+        const heroContent = document.getElementById('heroContent');
+        const screenshotContainer = document.getElementById('screenshotContainer');
+
+        function handleScroll() {
+            const scrollPosition = window.pageYOffset;
+            
+            // Parallax effect for screenshot
+            if (screenshotContainer) {
+                screenshotContainer.style.transform = `translateY(-${scrollPosition * 0.5}px)`;
+            }
+            
+            // Fade out hero content
+            if (heroContent) {
+                const maxScroll = 400;
+                const opacity = 1 - Math.min(scrollPosition / maxScroll, 1);
+                heroContent.style.opacity = opacity.toString();
+            }
+        }
+
+        // Container Scroll Animation - Fixed timing and improved responsiveness
+        const containerScrollRef = document.getElementById('containerScrollRef');
+        const scrollCard = document.getElementById('scrollCard');
+        const scrollHeader = document.getElementById('scrollHeader');
+        let isMobile = window.innerWidth <= 768;
+
+        window.addEventListener('resize', () => {
+            isMobile = window.innerWidth <= 768;
+        });
+
+        function handleContainerScroll() {
+            if (!containerScrollRef || !scrollCard || !scrollHeader) return;
+
+            const rect = containerScrollRef.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            // Start animation earlier and make it more responsive
+            const elementCenter = rect.top + rect.height / 2;
+            const viewportCenter = windowHeight / 2;
+            
+            // Calculate progress based on how close the element center is to viewport center
+            // Start animation when element enters viewport, peak at center, end when leaving
+            let progress;
+            if (rect.bottom < 0) {
+                progress = 1; // Past viewport
+            } else if (rect.top > windowHeight) {
+                progress = 0; // Before viewport
+            } else {
+                // Element is in viewport
+                const distanceFromCenter = Math.abs(elementCenter - viewportCenter);
+                const maxDistance = windowHeight / 2 + rect.height / 2;
+                progress = Math.max(0, Math.min(1, (maxDistance - distanceFromCenter) / maxDistance));
+            }
+
+            // Enhanced scale calculation for better visual effect
+            const scaleStart = isMobile ? 0.7 : 1.05;
+            const scaleEnd = isMobile ? 0.95 : 1;
+            
+            // More dramatic rotation and better easing
+            const rotate = 25 * (1 - progress); // 25 to 0
+            const scale = scaleStart + (scaleEnd - scaleStart) * progress;
+            const translateY = -80 * progress; // 0 to -80
+
+            // Apply transforms with will-change for better performance
+            if (scrollCard) {
+                scrollCard.style.willChange = 'transform';
+                scrollCard.style.transform = `rotateX(${rotate}deg) scale(${scale})`;
+            }
+            
+            if (scrollHeader) {
+                scrollHeader.style.willChange = 'transform';
+                scrollHeader.style.transform = `translateY(${translateY}px)`;
+            }
+        }
+
+        // Table filtering functionality
+        const keywordFilter = document.getElementById('keywordFilter');
+        const platformFilter = document.getElementById('platformFilter');
+        const minVolumeFilter = document.getElementById('minVolumeFilter');
+        const maxCpcFilter = document.getElementById('maxCpcFilter');
+        const tableBody = document.getElementById('tableBody');
+        const selectAllCheckbox = document.getElementById('selectAll');
+
+        function filterTable() {
+            const keywordValue = keywordFilter.value.toLowerCase();
+            const platformValue = platformFilter.value;
+            const minVolume = minVolumeFilter.value ? parseInt(minVolumeFilter.value) : 0;
+            const maxCpc = maxCpcFilter.value ? parseFloat(maxCpcFilter.value) : Infinity;
+
+            const rows = tableBody.querySelectorAll('tr');
+            rows.forEach(row => {
+                const keyword = row.querySelector('.keyword-cell').textContent.toLowerCase();
+                const platform = row.cells[2].textContent;
+                const volume = parseInt(row.cells[4].textContent.replace(/,/g, ''));
+                const cpc = parseFloat(row.cells[5].textContent.replace('$', ''));
+
+                const matchesKeyword = keyword.includes(keywordValue);
+                const matchesPlatform = !platformValue || platform === platformValue;
+                const matchesVolume = volume >= minVolume;
+                const matchesCpc = cpc <= maxCpc;
+
+                if (matchesKeyword && matchesPlatform && matchesVolume && matchesCpc) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        // Add event listeners for filters
+        keywordFilter.addEventListener('input', filterTable);
+        platformFilter.addEventListener('change', filterTable);
+        minVolumeFilter.addEventListener('input', filterTable);
+        maxCpcFilter.addEventListener('input', filterTable);
+
+        // Select all functionality
+        selectAllCheckbox.addEventListener('change', function() {
+            const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+            rowCheckboxes.forEach(checkbox => {
+                checkbox.checked = this.checked;
+            });
+        });
+
+        // Individual checkbox functionality
+        document.querySelectorAll('.row-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const allChecked = Array.from(document.querySelectorAll('.row-checkbox')).every(cb => cb.checked);
+                const someChecked = Array.from(document.querySelectorAll('.row-checkbox')).some(cb => cb.checked);
+                
+                selectAllCheckbox.checked = allChecked;
+                selectAllCheckbox.indeterminate = someChecked && !allChecked;
+            });
+        });
+
+        // Throttled scroll handler for performance
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    handleScroll();
+                    handleContainerScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // Intersection Observer for CTA animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe CTA elements
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctaElements = document.querySelectorAll('.cta-badge, .cta-title, .cta-description, .cta-button, .cta-glow');
+            ctaElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
